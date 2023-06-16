@@ -12,6 +12,25 @@ const port = 3000;
 // Middleware
 app.use(bodyParser.json());
 
+// Swagger options
+const swaggerOptions = {
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'Product API',
+        version: '1.0.0',
+        description: 'API documentation for the Product API',
+      },
+    },
+    apis: ['index.js'], // Path to the API route files
+  };
+  
+  // Initialize Swagger-jsdoc
+  const swaggerSpecs = swaggerJSDoc(swaggerOptions);
+  
+  // Serve Swagger API documentation
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+
 // Database path
 const databasePath = path.join(__dirname, 'database.sqlite');
 
@@ -44,6 +63,23 @@ const Product = sequelize.define('Product', {
 
 // Create the products table if it doesn't exist
 Product.sync();
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Product:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: integer
+ *           description: Product ID
+ *         name:
+ *           type: string
+ *           description: Product name
+ *         price:
+ *           type: number
+ *           description: Product price
+ */
 
 /**
  * @swagger
