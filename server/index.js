@@ -81,6 +81,7 @@ Product.sync();
  *           type: number
  *           description: Product price
  */
+
 /**
  * @swagger
  * /products:
