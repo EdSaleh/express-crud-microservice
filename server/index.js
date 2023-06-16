@@ -63,6 +63,7 @@ const Product = sequelize.define('Product', {
 
 // Create the products table if it doesn't exist
 Product.sync();
+
 /**
  * @swagger
  * components:
@@ -80,7 +81,6 @@ Product.sync();
  *           type: number
  *           description: Product price
  */
-
 /**
  * @swagger
  * /products:
