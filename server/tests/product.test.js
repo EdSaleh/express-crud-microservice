@@ -1,7 +1,7 @@
 const request = require('supertest');
 const fs = require('fs');
 const path = require('path');
-const app = require('../index');
+const app = require('../app');
 
 
 const databasePath = path.join(__dirname, '..', 'database.sqlite');
